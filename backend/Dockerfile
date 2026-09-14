@@ -16,6 +16,8 @@
  RUN addgroup -S appgroup && adduser -S appuser -G appgroup 
  WORKDIR /app
 
+ RUN apk add --no-cache curl
+
  COPY --from=builder /build/target/*.jar app.jar
  RUN chown appuser:appgroup app.jar
  USER appuser 
